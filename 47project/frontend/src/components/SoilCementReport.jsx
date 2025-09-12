@@ -6,16 +6,20 @@ import { Printer, Download, Edit2, Save, X } from 'lucide-react';
 
 const SoilCementReport = () => {
   const [isEditing, setIsEditing] = useState(false);
-  const [drillingTimer, setDrillingTimer] = useState(null);
-  const [groutingTimer, setGroutingTimer] = useState(null);
+  const [drillingTimer, setDrillingTimer] = useState('00:00:00');
+  const [groutingTimer, setGroutingTimer] = useState('00:00:00');
   const [drillingStartTime, setDrillingStartTime] = useState(null);
   const [groutingStartTime, setGroutingStartTime] = useState(null);
+  const [showDrillingTimeInput, setShowDrillingTimeInput] = useState(false);
+  const [showGroutingTimeInput, setShowGroutingTimeInput] = useState(false);
+  const [customDrillingTime, setCustomDrillingTime] = useState('');
+  const [customGroutingTime, setCustomGroutingTime] = useState('');
   
   // State for real-time graph data
   const [graphData, setGraphData] = useState({
     pressure: Array(11).fill(0).map((_, i) => ({ x: i * 1.0, y: 100 + Math.random() * 50 })),
     rotation: Array(11).fill(0).map((_, i) => ({ x: i * 1.0, y: 50 + Math.random() * 20 })),
-    speed: Array(11).fill(0).map((_, i) => ({ x: i * 1.0, y: i * 0.4 + Math.random() * 0.5 })),
+    speed: Array(11).fill(0).map((_, i) => ({ x: i * 1.0, y: Math.min(1, i * 0.08 + Math.random() * 0.2) })),
     flow: Array(11).fill(0).map((_, i) => ({ x: i * 1.0, y: 100 + Math.random() * 30 })),
     waterVolume: Array(11).fill(0).map((_, i) => ({ x: i * 1.0, y: i * 80 + Math.random() * 50 })),
     cementVolume: Array(11).fill(0).map((_, i) => ({ x: i * 1.0, y: i * 80 + Math.random() * 50 }))
@@ -67,7 +71,7 @@ const SoilCementReport = () => {
           // อัพเดทกราฟที่เกี่ยวข้องกับความลึก
           newData.speed = prev.speed.map((point, i) => ({
             ...point,
-            y: Math.min(10, (numValue / 10) + (i * 0.1) + Math.random() * 0.2)
+            y: Math.min(1, (numValue / 100) + (i * 0.08) + Math.random() * 0.1)
           }));
           newData.waterVolume = prev.waterVolume.map((point, i) => ({
             ...point,
@@ -142,184 +146,213 @@ const SoilCementReport = () => {
 
   // Timer functions for drilling
   const startDrillingTimer = () => {
+    // เริ่ม timer ด้วยเวลาปัจจุบันเสมอ
     const now = new Date();
-    const timeString = now.toTimeString().split(' ')[0];
-    setFormData(prev => ({ ...prev, startDrilling: timeString }));
-    setDrillingStartTime(now);
     
-    const timer = setInterval(() => {
-      const elapsed = new Date() - now;
-      const hours = Math.floor(elapsed / 3600000);
-      const minutes = Math.floor((elapsed % 3600000) / 60000);
-      const seconds = Math.floor((elapsed % 60000) / 1000);
-      const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-      setFormData(prev => ({ ...prev, timeDrilling: timeString }));
+    // ถ้ามี custom time ที่ set ไว้แล้ว ให้ใช้เวลานั้น
+    if (formData.startDrilling && !drillingStartTime) {
+      // ใช้เวลาที่ set ไว้แล้ว แต่ไม่เปลี่ยน drillingStartTime
+      setDrillingStartTime(now); // ใช้เวลาปัจจุบันเป็นจุดเริ่มต้น timer
+      setDrillingTimer('00:00:00'); // เริ่มต้นที่ 00:00:00
+    } else {
+      // ใช้เวลาปัจจุบัน
+      const timeString = now.toTimeString().split(' ')[0];
+      setFormData(prev => ({ ...prev, startDrilling: timeString }));
+      setDrillingStartTime(now);
+      setDrillingTimer('00:00:00'); // รีเซ็ต timer เป็น 00:00:00
+    }
+    setShowDrillingTimeInput(false); // ซ่อน input
+  };
+
+  const setDrillingCustomTime = () => {
+    if (customDrillingTime) {
+      setFormData(prev => ({ ...prev, startDrilling: customDrillingTime }));
+      setShowDrillingTimeInput(false);
+      setCustomDrillingTime('');
+    }
+  };
+
+  const startDrillingTimerWithCustomTime = () => {
+    if (formData.startDrilling) {
+      // แปลงเวลาที่ set ไว้เป็น Date object
+      const [hours, minutes, seconds] = formData.startDrilling.split(':').map(Number);
+      const now = new Date();
+      const customTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes, seconds);
       
-      // Update graph data in real-time for drilling
-      setGraphData(prev => ({
-        ...prev,
-        pressure: prev.pressure.map((point, i) => ({
-          ...point,
-          y: 100 + Math.random() * 50 + Math.sin(elapsed / 1000 + i) * 10
-        })),
-        rotation: prev.rotation.map((point, i) => ({
-          ...point,
-          y: 50 + Math.random() * 20 + Math.cos(elapsed / 1000 + i) * 5
-        })),
-        speed: prev.speed.map((point, i) => ({
-          ...point,
-          y: Math.min(10, i * 0.4 + Math.random() * 0.5 + Math.sin(elapsed / 1000 + i) * 0.3)
-        })),
-        flow: prev.flow.map((point, i) => ({
-          ...point,
-          y: 100 + Math.random() * 30 + Math.sin(elapsed / 1000 + i) * 15
-        })),
-        waterVolume: prev.waterVolume.map((point, i) => ({
-          ...point,
-          y: Math.min(2000, i * 80 + Math.random() * 50 + Math.sin(elapsed / 1000 + i) * 40)
-        }))
-      }));
-    }, 1000);
-    
-    setDrillingTimer(timer);
+      setDrillingStartTime(customTime);
+      setDrillingTimer('00:00:00'); // เริ่มต้นที่ 00:00:00
+    }
   };
 
   const stopDrillingTimer = () => {
-    if (drillingTimer) {
-      clearInterval(drillingTimer);
-      setDrillingTimer(null);
-    }
-    
-    const now = new Date();
-    const endTimeString = now.toTimeString().split(' ')[0];
-    setFormData(prev => ({ ...prev, endDrilling: endTimeString }));
-    
     if (drillingStartTime) {
-      const elapsed = new Date() - drillingStartTime;
-      const hours = Math.floor(elapsed / 3600000);
-      const minutes = Math.floor((elapsed % 3600000) / 60000);
-      const seconds = Math.floor((elapsed % 60000) / 1000);
-      const elapsedTimeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-      setFormData(prev => ({ ...prev, timeDrilling: elapsedTimeString }));
+      // ใช้เวลาที่ timer เดินอยู่ (เวลาปัจจุบันที่แสดงใน timer)
+      const currentTimerValue = drillingTimer; // เช่น "01:58:48"
+      const [timerHours, timerMinutes, timerSeconds] = currentTimerValue.split(':').map(Number);
+      
+      // แปลง Start time ที่ set ไว้เป็น milliseconds
+      const [startHours, startMinutes, startSeconds] = formData.startDrilling.split(':').map(Number);
+      const startTime = new Date();
+      startTime.setHours(startHours, startMinutes, startSeconds, 0);
+      
+      // คำนวณ End time = Start time ที่ set ไว้ + Timer duration
+      const timerDurationMs = (timerHours * 3600 + timerMinutes * 60 + timerSeconds) * 1000;
+      const endTime = new Date(startTime.getTime() + timerDurationMs);
+      const endTimeString = endTime.toTimeString().split(' ')[0];
+      
+      setFormData(prev => ({ 
+        ...prev, 
+        timeDrilling: currentTimerValue,
+        endDrilling: endTimeString 
+      }));
       setDrillingStartTime(null);
+      setDrillingTimer(currentTimerValue); // เก็บค่า timer สุดท้าย
     }
   };
 
   // Timer functions for grouting
   const startGroutingTimer = () => {
+    // เริ่ม timer ด้วยเวลาปัจจุบันเสมอ
     const now = new Date();
-    const timeString = now.toTimeString().split(' ')[0];
-    setFormData(prev => ({ ...prev, startGrouting: timeString }));
-    setGroutingStartTime(now);
     
-    const timer = setInterval(() => {
-      const elapsed = new Date() - now;
-      const hours = Math.floor(elapsed / 3600000);
-      const minutes = Math.floor((elapsed % 3600000) / 60000);
-      const seconds = Math.floor((elapsed % 60000) / 1000);
-      const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-      setFormData(prev => ({ ...prev, timeGrouting: timeString }));
+    // ถ้ามี custom time ที่ set ไว้แล้ว ให้ใช้เวลานั้น
+    if (formData.startGrouting && !groutingStartTime) {
+      // ใช้เวลาที่ set ไว้แล้ว แต่ไม่เปลี่ยน groutingStartTime
+      setGroutingStartTime(now); // ใช้เวลาปัจจุบันเป็นจุดเริ่มต้น timer
+      setGroutingTimer('00:00:00'); // เริ่มต้นที่ 00:00:00
+    } else {
+      // ใช้เวลาปัจจุบัน
+      const timeString = now.toTimeString().split(' ')[0];
+      setFormData(prev => ({ ...prev, startGrouting: timeString }));
+      setGroutingStartTime(now);
+      setGroutingTimer('00:00:00'); // รีเซ็ต timer เป็น 00:00:00
+    }
+    setShowGroutingTimeInput(false); // ซ่อน input
+  };
+
+  const setGroutingCustomTime = () => {
+    if (customGroutingTime) {
+      setFormData(prev => ({ ...prev, startGrouting: customGroutingTime }));
+      setShowGroutingTimeInput(false);
+      setCustomGroutingTime('');
+    }
+  };
+
+  const startGroutingTimerWithCustomTime = () => {
+    if (formData.startGrouting) {
+      // แปลงเวลาที่ set ไว้เป็น Date object
+      const [hours, minutes, seconds] = formData.startGrouting.split(':').map(Number);
+      const now = new Date();
+      const customTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes, seconds);
       
-      // Update graph data in real-time for grouting
-      setGraphData(prev => ({
-        ...prev,
-        pressure: prev.pressure.map((point, i) => ({
-          ...point,
-          y: 100 + Math.random() * 50 + Math.cos(elapsed / 1000 + i) * 10
-        })),
-        rotation: prev.rotation.map((point, i) => ({
-          ...point,
-          y: 50 + Math.random() * 20 + Math.cos(elapsed / 1000 + i) * 5
-        })),
-        speed: prev.speed.map((point, i) => ({
-          ...point,
-          y: Math.min(2, 1 + Math.random() * 0.5 + Math.cos(elapsed / 1000 + i) * 0.2)
-        })),
-        flow: prev.flow.map((point, i) => ({
-          ...point,
-          y: 100 + Math.random() * 30 + Math.cos(elapsed / 1000 + i) * 15
-        })),
-        waterVolume: prev.waterVolume.map((point, i) => ({
-          ...point,
-          y: Math.min(2000, i * 80 + Math.random() * 50 + Math.cos(elapsed / 1000 + i) * 40)
-        })),
-        cementVolume: prev.cementVolume.map((point, i) => ({
-          ...point,
-          y: Math.min(2000, i * 80 + Math.random() * 50 + Math.cos(elapsed / 1000 + i) * 40)
-        }))
-      }));
-    }, 1000);
-    
-    setGroutingTimer(timer);
+      setGroutingStartTime(customTime);
+      setGroutingTimer('00:00:00'); // เริ่มต้นที่ 00:00:00
+    }
   };
 
   const stopGroutingTimer = () => {
-    if (groutingTimer) {
-      clearInterval(groutingTimer);
-      setGroutingTimer(null);
-    }
-    
-    const now = new Date();
-    const endTimeString = now.toTimeString().split(' ')[0];
-    setFormData(prev => ({ ...prev, endGrouting: endTimeString }));
-    
     if (groutingStartTime) {
-      const elapsed = new Date() - groutingStartTime;
-      const hours = Math.floor(elapsed / 3600000);
-      const minutes = Math.floor((elapsed % 3600000) / 60000);
-      const seconds = Math.floor((elapsed % 60000) / 1000);
-      const elapsedTimeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-      setFormData(prev => ({ ...prev, timeGrouting: elapsedTimeString }));
+      // ใช้เวลาที่ timer เดินอยู่ (เวลาปัจจุบันที่แสดงใน timer)
+      const currentTimerValue = groutingTimer; // เช่น "00:25:00"
+      const [timerHours, timerMinutes, timerSeconds] = currentTimerValue.split(':').map(Number);
+      
+      // แปลง Start time ที่ set ไว้เป็น milliseconds
+      const [startHours, startMinutes, startSeconds] = formData.startGrouting.split(':').map(Number);
+      const startTime = new Date();
+      startTime.setHours(startHours, startMinutes, startSeconds, 0);
+      
+      // คำนวณ End time = Start time ที่ set ไว้ + Timer duration
+      const timerDurationMs = (timerHours * 3600 + timerMinutes * 60 + timerSeconds) * 1000;
+      const endTime = new Date(startTime.getTime() + timerDurationMs);
+      const endTimeString = endTime.toTimeString().split(' ')[0];
+      
+      setFormData(prev => ({ 
+        ...prev, 
+        timeGrouting: currentTimerValue,
+        endGrouting: endTimeString 
+      }));
       setGroutingStartTime(null);
+      setGroutingTimer(currentTimerValue); // เก็บค่า timer สุดท้าย
     }
   };
 
   // Cleanup timers on component unmount
   React.useEffect(() => {
     return () => {
-      if (drillingTimer) clearInterval(drillingTimer);
-      if (groutingTimer) clearInterval(groutingTimer);
+      // ไม่ต้อง clearInterval เพราะเราไม่ได้เก็บ timer ID แล้ว
     };
-  }, [drillingTimer, groutingTimer]);
+  }, []);
 
-  // Continuous graph updates when timers are running
+  // Continuous timer updates and graph updates when timers are running
   useEffect(() => {
     let interval;
     if (drillingStartTime || groutingStartTime) {
       interval = setInterval(() => {
         const now = Date.now();
-        const elapsed = (now - (drillingStartTime || groutingStartTime)) / 1000;
+        
+        // อัพเดท Drilling Timer
+        if (drillingStartTime) {
+          const elapsed = (now - drillingStartTime) / 1000;
+          // ใช้ค่าสัมบูรณ์เพื่อป้องกันค่าติดลบ
+          const absoluteElapsed = Math.abs(elapsed);
+          const hours = Math.floor(absoluteElapsed / 3600);
+          const minutes = Math.floor((absoluteElapsed % 3600) / 60);
+          const seconds = Math.floor(absoluteElapsed % 60);
+          const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+          setDrillingTimer(timeString); // อัพเดท timer state
+          setFormData(prev => ({ ...prev, timeDrilling: timeString }));
+        }
+        
+        // อัพเดท Grouting Timer
+        if (groutingStartTime) {
+          const elapsed = (now - groutingStartTime) / 1000;
+          // ใช้ค่าสัมบูรณ์เพื่อป้องกันค่าติดลบ
+          const absoluteElapsed = Math.abs(elapsed);
+          const hours = Math.floor(absoluteElapsed / 3600);
+          const minutes = Math.floor((absoluteElapsed % 3600) / 60);
+          const seconds = Math.floor(absoluteElapsed % 60);
+          const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+          setGroutingTimer(timeString); // อัพเดท timer state
+          setFormData(prev => ({ ...prev, timeGrouting: timeString }));
+        }
         
         // คำนวณข้อมูลกราฟจากข้อมูลฟอร์มจริง
         const depth = parseFloat(formData.tip) || 10.0;
         const cementRatio = parseFloat(formData.cementRatio) || 250.0;
         const groutVolume = parseFloat(formData.groutVolume) || 1004.0;
+        const diameter = parseFloat(formData.diameter) || 0.6;
+        
+        // ใช้เวลาปัจจุบันสำหรับการคำนวณกราฟ
+        const currentTime = Date.now();
+        const drillingElapsed = drillingStartTime ? (currentTime - drillingStartTime) / 1000 : 0;
+        const groutingElapsed = groutingStartTime ? (currentTime - groutingStartTime) / 1000 : 0;
+        const graphElapsed = Math.max(drillingElapsed, groutingElapsed);
         
         setGraphData(prev => ({
           ...prev,
           pressure: prev.pressure.map((point, i) => ({
             ...point,
-            y: 100 + (cementRatio / 10) + Math.sin(elapsed + i) * 10 + Math.random() * 20
+            y: 100 + (cementRatio / 10) + Math.sin(graphElapsed + i) * 10 + Math.random() * 20
           })),
           rotation: prev.rotation.map((point, i) => ({
             ...point,
-            y: 50 + (depth / 20) + Math.cos(elapsed + i) * 5 + Math.random() * 10
+            y: 50 + (depth / 20) + Math.cos(graphElapsed + i) * 5 + Math.random() * 10
           })),
           speed: prev.speed.map((point, i) => ({
             ...point,
-            y: Math.min(10, (depth / 10) + Math.sin(elapsed + i) * 0.3 + Math.random() * 0.2)
+            y: Math.min(1, (depth / 100) + Math.sin(graphElapsed + i) * 0.1 + Math.random() * 0.1)
           })),
           flow: prev.flow.map((point, i) => ({
             ...point,
-            y: 100 + (groutVolume / 20) + Math.sin(elapsed + i) * 15 + Math.random() * 10
+            y: 100 + (groutVolume / 20) + Math.sin(graphElapsed + i) * 15 + Math.random() * 10
           })),
           waterVolume: prev.waterVolume.map((point, i) => ({
             ...point,
-            y: Math.min(2000, (depth * 80) + Math.sin(elapsed + i) * 40 + Math.random() * 30)
+            y: Math.min(2000, (depth * 80) + Math.sin(graphElapsed + i) * 40 + Math.random() * 30)
           })),
           cementVolume: prev.cementVolume.map((point, i) => ({
             ...point,
-            y: Math.min(2000, (depth * 80) + Math.cos(elapsed + i) * 40 + Math.random() * 30)
+            y: Math.min(2000, (depth * 80) + Math.cos(graphElapsed + i) * 40 + Math.random() * 30)
           }))
         }));
       }, 1000);
@@ -511,24 +544,61 @@ const SoilCementReport = () => {
                   Start Drilling
                 </td>
                 <td className="border border-gray-300">
-                  <div className="flex items-center space-x-2">
-                    <span className="text-gray-800">{formData.startDrilling}</span>
-                    {!drillingTimer ? (
+                  <div className="flex flex-col space-y-2">
+                    <div className="flex items-center space-x-2">
+                      <span className="text-gray-800">{formData.startDrilling}</span>
+                      {!drillingStartTime ? (
+                        <Button
+                          onClick={startDrillingTimer}
+                          className="px-2 py-1 text-xs bg-green-600 hover:bg-green-700 text-white print:hidden"
+                          disabled={isEditing}
+                        >
+                          Start
+                        </Button>
+                      ) : (
+                        <Button
+                          onClick={stopDrillingTimer}
+                          className="px-2 py-1 text-xs bg-red-600 hover:bg-red-700 text-white print:hidden"
+                          disabled={isEditing}
+                        >
+                          Stop
+                        </Button>
+                      )}
                       <Button
-                        onClick={startDrillingTimer}
-                        className="px-2 py-1 text-xs bg-green-600 hover:bg-green-700 text-white print:hidden"
+                        onClick={() => setShowDrillingTimeInput(!showDrillingTimeInput)}
+                        className="px-2 py-1 text-xs bg-blue-600 hover:bg-blue-700 text-white print:hidden"
                         disabled={isEditing}
                       >
-                        Start
+                        Custom
                       </Button>
-                    ) : (
-                      <Button
-                        onClick={stopDrillingTimer}
-                        className="px-2 py-1 text-xs bg-red-600 hover:bg-red-700 text-white print:hidden"
-                        disabled={isEditing}
-                      >
-                        Stop
-                      </Button>
+                    </div>
+                    
+                    {showDrillingTimeInput && (
+                      <div className="flex items-center space-x-2 print:hidden">
+                        <Input
+                          type="time"
+                          value={customDrillingTime}
+                          onChange={(e) => setCustomDrillingTime(e.target.value)}
+                          className="w-24 h-8 text-xs"
+                          step="1"
+                        />
+                        <Button 
+                          onClick={setDrillingCustomTime}
+                          className="px-2 py-1 text-xs bg-blue-600 hover:bg-blue-700 text-white"
+                        >
+                          Set
+                        </Button>
+                        <Button 
+                          onClick={() => {
+                            setShowDrillingTimeInput(false);
+                            setCustomDrillingTime('');
+                          }}
+                          variant="outline"
+                          className="px-2 py-1 text-xs"
+                        >
+                          Cancel
+                        </Button>
+                      </div>
                     )}
                   </div>
                 </td>
@@ -536,25 +606,62 @@ const SoilCementReport = () => {
                   Start Grouting
                 </td>
                 <td className="border border-gray-300">
-                  <div className="flex items-center space-x-2">
-                    <span className="text-gray-800">{formData.startGrouting}</span>
-                    {!groutingTimer ? (
-                      <Button
-                        onClick={startGroutingTimer}
-                        className="px-2 py-1 text-xs bg-green-600 hover:bg-green-700 text-white print:hidden"
-                        disabled={isEditing}
-                      >
-                        Start
-                      </Button>
-                    ) : (
-                      <Button
-                        onClick={stopGroutingTimer}
-                        className="px-2 py-1 text-xs bg-green-600 hover:bg-red-700 text-white print:hidden"
-                        disabled={isEditing}
-                      >
-                        Stop
-                      </Button>
+                  <div className="flex flex-col space-y-2">
+                    <div className="flex items-center space-x-2">
+                      <span className="text-gray-800">{formData.startGrouting}</span>
+                      {!groutingStartTime ? (
+                        <Button
+                          onClick={startGroutingTimer}
+                          className="px-2 py-1 text-xs bg-green-600 hover:bg-green-700 text-white print:hidden"
+                          disabled={isEditing}
+                        >
+                          Start
+                        </Button>
+                      ) : (
+                        <Button
+                          onClick={stopGroutingTimer}
+                          className="px-2 py-1 text-xs bg-red-600 hover:bg-red-700 text-white print:hidden"
+                          disabled={isEditing}
+                        >
+                          Stop
+                        </Button>
                       )}
+                      <Button
+                        onClick={() => setShowGroutingTimeInput(!showGroutingTimeInput)}
+                        className="px-2 py-1 text-xs bg-blue-600 hover:bg-blue-700 text-white print:hidden"
+                        disabled={isEditing}
+                      >
+                        Custom
+                      </Button>
+                    </div>
+                    
+                    {showGroutingTimeInput && (
+                      <div className="flex items-center space-x-2 print:hidden">
+                        <Input
+                          type="time"
+                          value={customGroutingTime}
+                          onChange={(e) => setCustomGroutingTime(e.target.value)}
+                          className="w-24 h-8 text-xs"
+                          step="1"
+                        />
+                        <Button 
+                          onClick={setGroutingCustomTime}
+                          className="px-2 py-1 text-xs bg-blue-600 hover:bg-blue-700 text-white"
+                        >
+                          Set
+                        </Button>
+                        <Button 
+                          onClick={() => {
+                            setShowGroutingTimeInput(false);
+                            setCustomGroutingTime('');
+                          }}
+                          variant="outline"
+                          className="px-2 py-1 text-xs"
+                        >
+                          Cancel
+                        </Button>
+                      </div>
+                    )}
                   </div>
                 </td>
                 <td className="border border-gray-300 font-semibold text-gray-700">
@@ -984,8 +1091,8 @@ const SoilCementReport = () => {
                 <div className="h-40 relative print:h-20">
                   {/* Y-axis labels */}
                   <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-xs text-gray-600 print:text-xs">
-                    <span>2</span>
                     <span>1</span>
+                    <span>0.5</span>
                     <span>0</span>
                   </div>
                   {/* X-axis labels */}
@@ -1006,7 +1113,7 @@ const SoilCementReport = () => {
                     </defs>
                     <path
                       d={`M 0 160 ${graphData.speed.map((point, i) => 
-                        `L ${point.x * 40} ${160 - (point.y / 2) * 160}`
+                        `L ${point.x * 40} ${160 - (point.y / 1) * 160}`
                       ).join(' ')} L 400 160 Z`}
                       fill="url(#speedGradient2)"
                       stroke="#22c55e"

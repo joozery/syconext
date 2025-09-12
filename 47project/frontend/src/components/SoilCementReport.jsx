@@ -886,40 +886,12 @@ const SoilCementReport = () => {
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 print:grid-cols-2 print:gap-4">
             <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-6 border border-orange-200 print:bg-white print:border-2 print:p-3 print:rounded-lg">
               <h3 className="text-lg font-semibold text-orange-800 mb-4 text-center print:text-base print:mb-2 print:text-orange-900">Pressure (Bar.) ↓</h3>
-              <div className="bg-white rounded-lg p-4 print:shadow-none print:border print:p-2">
-                <div className="h-40 relative print:h-20">
-                  {/* Y-axis labels */}
-                  <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-xs text-gray-600 print:text-xs">
-                    <span>400</span>
-                    <span>200</span>
-                    <span>0</span>
-                  </div>
-                  {/* X-axis labels */}
-                  <div className="absolute bottom-0 left-8 right-0 flex justify-between text-xs text-gray-600 print:text-xs">
-                    <span>0.0</span>
-                    <span>2.5</span>
-                    <span>5.0</span>
-                    <span>7.5</span>
-                    <span>10.0</span>
-                  </div>
-                  {/* Area Chart */}
-                  <svg className="w-full h-full print:w-full print:h-full" viewBox="0 0 400 160">
-                    <defs>
-                      <linearGradient id="pressureGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#f97316" stopOpacity="0.8"/>
-                        <stop offset="100%" stopColor="#f97316" stopOpacity="0.3"/>
-                      </linearGradient>
-                    </defs>
-                    <path
-                      d={`M 0 160 ${graphData.pressure.map((point, i) => 
-                        `L ${point.x * 40} ${160 - (point.y / 400) * 160}`
-                      ).join(' ')} L 400 160 Z`}
-                      fill="url(#pressureGradient1)"
-                      stroke="#f97316"
-                      strokeWidth="2"
-                    />
-                  </svg>
-                </div>
+              <div className="h-48 relative print:h-24 pb-1">
+                <img 
+                  src="/src/assets/pressuredown.jpg" 
+                  alt="Pressure Chart" 
+                  className="w-full h-full object-contain rounded-lg"
+                />
               </div>
             </div>
             
@@ -1087,40 +1059,12 @@ const SoilCementReport = () => {
             
             <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 border border-green-200 print:bg-white print:border-2 print:p-3 print:rounded-lg">
               <h3 className="text-lg font-semibold text-green-800 mb-4 text-center print:text-base print:mb-2 print:text-green-900">Speed (M/Min) ↑</h3>
-              <div className="bg-white rounded-lg p-4 print:shadow-none print:border print:p-2">
-                <div className="h-40 relative print:h-20">
-                  {/* Y-axis labels */}
-                  <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-xs text-gray-600 print:text-xs">
-                    <span>1</span>
-                    <span>0.5</span>
-                    <span>0</span>
-                  </div>
-                  {/* X-axis labels */}
-                  <div className="absolute bottom-0 left-8 right-0 flex justify-between text-xs text-gray-600 print:text-xs">
-                    <span>10.0</span>
-                    <span>7.5</span>
-                    <span>5.0</span>
-                    <span>2.5</span>
-                    <span>0.0</span>
-                  </div>
-                  {/* Area Chart */}
-                  <svg className="w-full h-full print:w-full print:h-full" viewBox="0 0 400 160">
-                    <defs>
-                      <linearGradient id="speedGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#22c55e" stopOpacity="0.8"/>
-                        <stop offset="100%" stopColor="#22c55e" stopOpacity="0.3"/>
-                      </linearGradient>
-                    </defs>
-                    <path
-                      d={`M 0 160 ${graphData.speed.map((point, i) => 
-                        `L ${point.x * 40} ${160 - (point.y / 1) * 160}`
-                      ).join(' ')} L 400 160 Z`}
-                      fill="url(#speedGradient2)"
-                      stroke="#22c55e"
-                      strokeWidth="2"
-                    />
-                  </svg>
-                </div>
+              <div className="h-48 relative print:h-24 pb-1">
+                <img 
+                  src="/src/assets/speedup.jpg" 
+                  alt="Speed Chart" 
+                  className="w-full h-full object-contain rounded-lg"
+                />
               </div>
             </div>
           </div>
@@ -1129,40 +1073,12 @@ const SoilCementReport = () => {
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 print:grid-cols-2 print:gap-4">
             <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl p-6 border border-yellow-200 print:bg-white print:border-2 print:p-3 print:rounded-lg">
               <h3 className="text-lg font-semibold text-yellow-800 mb-4 text-center print:text-base print:mb-2 print:text-yellow-900">Flow (L/Min) ↓</h3>
-              <div className="bg-white rounded-lg p-4 print:shadow-none print:border print:p-2">
-                <div className="h-40 relative print:h-20">
-                  {/* Y-axis labels */}
-                  <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-xs text-gray-600 print:text-xs">
-                    <span>200</span>
-                    <span>100</span>
-                    <span>0</span>
-                  </div>
-                  {/* X-axis labels */}
-                  <div className="absolute bottom-0 left-8 right-0 flex justify-between text-xs text-gray-600 print:text-xs">
-                    <span>0.0</span>
-                    <span>2.5</span>
-                    <span>5.0</span>
-                    <span>7.5</span>
-                    <span>10.0</span>
-                  </div>
-                  {/* Area Chart */}
-                  <svg className="w-full h-full print:w-full print:h-full" viewBox="0 0 400 160">
-                    <defs>
-                      <linearGradient id="flowGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#eab308" stopOpacity="0.8"/>
-                        <stop offset="100%" stopColor="#eab308" stopOpacity="0.3"/>
-                      </linearGradient>
-                    </defs>
-                    <path
-                      d={`M 0 160 ${graphData.flow.map((point, i) => 
-                        `L ${point.x * 40} ${160 - (point.y / 200) * 160}`
-                      ).join(' ')} L 400 160 Z`}
-                      fill="url(#flowGradient1)"
-                      stroke="#eab308"
-                      strokeWidth="2"
-                    />
-                  </svg>
-                </div>
+              <div className="h-48 relative print:h-24 pb-1">
+                <img 
+                  src="/src/assets/flowdown.jpg" 
+                  alt="Flow Chart" 
+                  className="w-full h-full object-contain rounded-lg"
+                />
               </div>
             </div>
             
@@ -1210,79 +1126,23 @@ const SoilCementReport = () => {
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 print:grid-cols-2 print:gap-4">
             <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 border border-purple-200 print:bg-white print:border-2 print:p-3 print:rounded-lg">
               <h3 className="text-lg font-semibold text-purple-800 mb-4 text-center print:text-base print:mb-2 print:text-purple-900">Water Volume (Liter) ↓</h3>
-              <div className="bg-white rounded-lg p-4 print:shadow-none print:border print:p-2">
-                <div className="h-40 relative print:h-20">
-                  {/* Y-axis labels */}
-                  <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-xs text-gray-600 print:text-xs">
-                    <span>2000</span>
-                    <span>1000</span>
-                    <span>0</span>
-                  </div>
-                  {/* X-axis labels */}
-                  <div className="absolute bottom-0 left-8 right-0 flex justify-between text-xs text-gray-600 print:text-xs">
-                    <span>0.0</span>
-                    <span>2.5</span>
-                    <span>5.0</span>
-                    <span>7.5</span>
-                    <span>10.0</span>
-                  </div>
-                  {/* Area Chart */}
-                  <svg className="w-full h-full print:w-full print:h-full" viewBox="0 0 400 160">
-                    <defs>
-                      <linearGradient id="waterGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#a855f7" stopOpacity="0.8"/>
-                        <stop offset="100%" stopColor="#a855f7" stopOpacity="0.3"/>
-                      </linearGradient>
-                    </defs>
-                    <path
-                      d={`M 0 160 ${graphData.waterVolume.map((point, i) => 
-                        `L ${point.x * 40} ${160 - (point.y / 2000) * 160}`
-                      ).join(' ')} L 400 160 Z`}
-                      fill="url(#waterGradient)"
-                      stroke="#a855f7"
-                      strokeWidth="2"
-                    />
-                  </svg>
-                </div>
+              <div className="h-48 relative print:h-24 pb-1">
+                <img 
+                  src="/src/assets/waterdown.jpg" 
+                  alt="Water Volume Chart" 
+                  className="w-full h-full object-contain rounded-lg"
+                />
               </div>
             </div>
             
             <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-xl p-6 border border-red-200 print:bg-white print:border-2 print:p-3 print:rounded-lg">
               <h3 className="text-lg font-semibold text-red-800 mb-4 text-center print:text-base print:mb-2 print:text-red-900">Cement Volume (Liter) ↑</h3>
-              <div className="bg-white rounded-lg p-4 print:shadow-none print:border print:p-2">
-                <div className="h-40 relative print:h-20">
-                  {/* Y-axis labels */}
-                  <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-xs text-gray-600 print:text-xs">
-                    <span>2000</span>
-                    <span>1000</span>
-                    <span>0</span>
-                  </div>
-                  {/* X-axis labels */}
-                  <div className="absolute bottom-0 left-8 right-0 flex justify-between text-xs text-gray-600 print:text-xs">
-                    <span>10.0</span>
-                    <span>7.5</span>
-                    <span>5.0</span>
-                    <span>2.5</span>
-                    <span>0.0</span>
-                  </div>
-                  {/* Area Chart */}
-                  <svg className="w-full h-full print:w-full print:h-full" viewBox="0 0 400 160">
-                    <defs>
-                      <linearGradient id="cementGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stopColor="#ef4444" stopOpacity="0.8"/>
-                        <stop offset="100%" stopColor="#ef4444" stopOpacity="0.3"/>
-                      </linearGradient>
-                    </defs>
-                    <path
-                      d={`M 0 160 ${graphData.cementVolume.map((point, i) => 
-                        `L ${point.x * 40} ${160 - (point.y / 2000) * 160}`
-                      ).join(' ')} L 400 160 Z`}
-                      fill="url(#cementGradient)"
-                      stroke="#ef4444"
-                      strokeWidth="2"
-                    />
-                  </svg>
-                </div>
+              <div className="h-48 relative print:h-24 pb-1">
+                <img 
+                  src="/src/assets/cementup.jpg" 
+                  alt="Cement Volume Chart" 
+                  className="w-full h-full object-contain rounded-lg"
+                />
               </div>
             </div>
           </div>

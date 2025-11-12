@@ -1,0 +1,562 @@
+📊 MySQL connection pool created
+✅ Database connection successful
+⚠️ Some tables are missing. Please run database migrations.
+🚀 Socket.IO initialized
+🔌 Socket.IO ready for real-time notifications
+🚀 Server running on 0.0.0.0:8000
+📊 Environment: development
+🌐 Frontend URL: http://localhost:3002
+🗄️  Database: eep_management@145.223.21.117:3306
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+[0mGET /api/projects/1 [32m200[0m 370.899 ms - 1765[0m
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+[0mGET /api/coordinators?status=approved [36m304[0m 920.952 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+[0mGET /api/projects/1 [36m304[0m 308.569 ms - -[0m
+[0mGET /api/coordinators?status=approved [36m304[0m 554.423 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+[0mGET /api/projects/1 [36m304[0m 241.883 ms - -[0m
+[0mGET /api/coordinators?status=approved [36m304[0m 302.495 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+[0mGET /api/projects/1 [36m304[0m 238.983 ms - -[0m
+[0mGET /api/coordinators?status=approved [36m304[0m 385.638 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+[0mGET /api/projects/1 [36m304[0m 232.808 ms - -[0m
+[0mGET /api/coordinators?status=approved [36m304[0m 288.310 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin' ]
+✅ Role authorized
+[0mPUT /api/projects/1 [32m200[0m 1337.438 ms - 2488[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+[0mGET /api/epc/list [36m304[0m 198.438 ms - -[0m
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+[0mGET /api/projects?limit=1000 [32m200[0m 581.174 ms - 7646[0m
+[0mGET /api/coordinators?limit=1000&status=approved [36m304[0m 903.332 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔍 /me query: SELECT id, email, firstName, lastName, phone, role, createdAt FROM users WHERE id = ?
+[0mGET /api/auth/me [36m304[0m 190.117 ms - -[0m
+✅ Socket authenticated: admin@eep.com Role: admin
+🔌 New socket connection: EHJg4Xyl5i7AJi86AAAB User: admin@eep.com
+👑 Admin joined admin-room: admin@eep.com
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+[0mGET /api/projects/1 [32m200[0m 282.935 ms - 2418[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+[0mGET /api/coordinators?status=approved [36m304[0m 329.383 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+[0mGET /api/projects/1 [36m304[0m 195.779 ms - -[0m
+[0mGET /api/coordinators?status=approved [36m304[0m 342.673 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin' ]
+✅ Role authorized
+[0mPUT /api/projects/1 [32m200[0m 766.743 ms - 2489[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+[0mGET /api/epc/list [36m304[0m 217.221 ms - -[0m
+[0mGET /api/coordinators?limit=1000&status=approved [36m304[0m 367.558 ms - -[0m
+[0mGET /api/projects?limit=1000 [32m200[0m 467.614 ms - 7647[0m
+🔌 Socket disconnected: EHJg4Xyl5i7AJi86AAAB
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔍 /me query: SELECT id, email, firstName, lastName, phone, role, createdAt FROM users WHERE id = ?
+[0mGET /api/auth/me [36m304[0m 183.144 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+✅ Socket authenticated: admin@eep.com Role: admin
+🔌 New socket connection: La8ppTLmEiombMwJAAAD User: admin@eep.com
+👑 Admin joined admin-room: admin@eep.com
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+[0mGET /api/coordinators?status=approved [36m304[0m 281.769 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+[0mGET /api/projects/1 [32m200[0m 476.749 ms - 2419[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+[0mGET /api/coordinators?status=approved [36m304[0m 282.248 ms - -[0m
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+[0mGET /api/projects/1 [36m304[0m 185.685 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+[0mGET /api/projects/1 [36m304[0m 291.598 ms - -[0m
+[0mGET /api/coordinators?status=approved [36m304[0m 307.939 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+[0mGET /api/projects/1 [36m304[0m 202.250 ms - -[0m
+[0mGET /api/coordinators?status=approved [36m304[0m 384.642 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+[0mGET /api/projects/1 [36m304[0m 187.283 ms - -[0m
+[0mGET /api/coordinators?status=approved [36m304[0m 287.698 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+[0mGET /api/projects/1 [36m304[0m 187.956 ms - -[0m
+[0mGET /api/coordinators?status=approved [36m304[0m 307.496 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin' ]
+✅ Role authorized
+[0mPUT /api/projects/1 [32m200[0m 820.012 ms - 2494[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+[0mGET /api/epc/list [36m304[0m 199.678 ms - -[0m
+[0mGET /api/projects?limit=1000 [32m200[0m 320.546 ms - 7652[0m
+[0mGET /api/coordinators?limit=1000&status=approved [36m304[0m 451.146 ms - -[0m
+🔌 Socket disconnected: La8ppTLmEiombMwJAAAD
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔍 /me query: SELECT id, email, firstName, lastName, phone, role, createdAt FROM users WHERE id = ?
+[0mGET /api/auth/me [36m304[0m 266.875 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+✅ Socket authenticated: admin@eep.com Role: admin
+🔌 New socket connection: L2UNPNK8FLKkRwI8AAAF User: admin@eep.com
+👑 Admin joined admin-room: admin@eep.com
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+[0mGET /api/coordinators?status=approved [36m304[0m 319.155 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+[0mGET /api/projects/1 [32m200[0m 579.275 ms - 2424[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+[0mGET /api/projects/1 [36m304[0m 217.273 ms - -[0m
+[0mGET /api/coordinators?status=approved [36m304[0m 597.566 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+[0mGET /api/epc/list [36m304[0m 529.940 ms - -[0m
+[0mGET /api/projects?page=1&limit=50 [32m200[0m 685.291 ms - 7650[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+[0mGET /api/document-versions/project/2/summary [32m200[0m 698.614 ms - 1716[0m
+[0mGET /api/document-versions/project/4/summary [32m200[0m 754.331 ms - 7790[0m
+[0mGET /api/document-versions/project/3/summary [32m200[0m 918.390 ms - 5365[0m
+[0mGET /api/document-versions/project/1/summary [32m200[0m 1111.546 ms - 2482[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+[0mGET /api/epc/list [36m304[0m 194.162 ms - -[0m
+[0mGET /api/projects?limit=1000 [36m304[0m 331.285 ms - -[0m
+[0mGET /api/coordinators?limit=1000&status=approved [36m304[0m 368.462 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+[0mGET /api/epc/list [36m304[0m 217.527 ms - -[0m
+[0mGET /api/projects?limit=100 [32m200[0m 436.372 ms - 7651[0m
+[0mGET /api/coordinators?limit=100 [36m304[0m 760.493 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+[0mGET /api/project-steps/1 [36m304[0m 465.197 ms - -[0m
+[0mGET /api/project-steps/3 [36m304[0m 470.993 ms - -[0m
+[0mGET /api/project-steps/4 [36m304[0m 534.488 ms - -[0m
+[0mGET /api/project-steps/2 [36m304[0m 556.686 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+[0mGET /api/projects/4 [32m200[0m 225.197 ms - 1879[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+[0mGET /api/epc/list [36m304[0m 224.788 ms - -[0m
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+[0mGET /api/projects/4 [36m304[0m 222.369 ms - -[0m
+[0mGET /api/projects?limit=100 [36m304[0m 500.187 ms - -[0m
+[0mGET /api/coordinators?limit=100 [36m304[0m 514.743 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+[0mGET /api/project-steps/3 [36m304[0m 296.898 ms - -[0m
+[0mGET /api/project-steps/4 [36m304[0m 305.639 ms - -[0m
+[0mGET /api/project-steps/1 [36m304[0m 327.566 ms - -[0m
+[0mGET /api/project-steps/2 [36m304[0m 330.134 ms - -[0m
+[0mGET /api/coordinators/8 [36m304[0m 749.398 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+[0mGET /api/coordinators/8 [36m304[0m 205.599 ms - -[0m
+[0mGET /api/project-steps/4 [36m304[0m 325.331 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+[0mGET /api/project-steps/4 [36m304[0m 318.068 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+[0mGET /api/projects/4 [36m304[0m 310.551 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+[0mGET /api/projects/4 [36m304[0m 229.335 ms - -[0m
+[0mGET /api/coordinators [36m304[0m 547.642 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+[0mGET /api/coordinators [36m304[0m 368.366 ms - -[0m
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+🔐 Auth middleware - Token: exists
+✅ Token decoded, userId: 1
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+🔒 authorizeRole - user: admin@eep.com role: admin required roles: [ 'admin', 'super-admin' ]
+✅ Role authorized
+👤 Users found: 1
+👤 User: admin@eep.com Role: admin
+✅ Auth successful, user set
+[0mGET /api/projects/null [33m404[0m 309.039 ms - 86[0m
+[0mGET /api/coordinators [36m304[0m 536.848 ms - -[0m
+🔌 Socket disconnected: L2UNPNK8FLKkRwI8AAAF

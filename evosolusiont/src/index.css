@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide scrollbar utility */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+  }
+  
+  /* Force dropdown to open downward - minimal approach */
+  .force-dropdown-down [data-radix-popper-content-wrapper] {
+    transform: translateY(4px) !important;
+  }
+  
+  .force-dropdown-down [data-side="top"] {
+    transform: translateY(4px) !important;
+  }
+}
+
+@layer base {
+  /* Hide scrollbar globally */
+  html, body, * {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+  }
+  
+  html::-webkit-scrollbar, 
+  body::-webkit-scrollbar, 
+  *::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+  
+  :root {
+    --background: 240 10% 99%; /* bg-slate-50 */
+    --foreground: 224 71% 4%; /* text-slate-900 */
+    --card: 0 0% 100%;
+    --card-foreground: 224 71% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71% 4%;
+    --primary: 221.2 83.2% 53.3%; /* blue-600 */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 240 4.8% 95.9%; /* bg-slate-100 */
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%; /* text-slate-500 */
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 240 5.9% 90%; /* border-slate-200 */
+    --input: 240 5.9% 90%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.75rem;
+    
+    /* Chart colors */
+    --chart-1: 221.2 83.2% 53.3%; /* blue-600 */
+    --chart-2: 158.1 64.4% 51.6%; /* teal-500 */
+    --chart-3: 25.9 95.7% 53.3%; /* orange-500 */
+    --chart-4: 142.1 76.2% 36.3%; /* green-600 */
+    --chart-5: 221.2 83.2% 53.3%; /* blue-600 */
+    --chart-6: 45.4 93.4% 47.5%; /* yellow-500 */
+    --chart-7: 271.5 81.3% 55.9%; /* purple-500 */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Noto Sans Thai', sans-serif;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    @apply bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent;
+  }
+  
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-xl border border-white/20;
+  }
+}
+
+/* Custom animations for login page */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Additional delay classes for new login design */
+.delay-1000 {
+  animation-delay: 1s;
+}
+
+.delay-2000 {
+  animation-delay: 2s;
+}
+
+.delay-3000 {
+  animation-delay: 3s;
+}
